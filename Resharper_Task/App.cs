@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Resharper_Task.Shapes;
 
 namespace Resharper_Task
@@ -14,6 +15,11 @@ namespace Resharper_Task
             Console.WriteLine($"Square area is: {square.GetArea()}");
             Console.WriteLine($"Circle area is: {circle.GetArea()}");
             Console.WriteLine($"Rectangle area is: {rectangle.GetArea()}");
+
+            Console.WriteLine();
+
+            var site = ConfigurationManager.AppSettings["SiteUrl"];
+            Console.WriteLine(site);
 
             Console.ReadKey();
         }
