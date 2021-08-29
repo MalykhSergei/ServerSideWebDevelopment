@@ -7,7 +7,7 @@ namespace Resharper_Task
     {
         private static void Main()
         {
-            var square = new Square(4);
+            var square = new Square(3);
             var rectangle = new Rectangle(3, 6);
             var circle = new Circle(5);
 
