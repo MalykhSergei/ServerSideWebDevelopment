@@ -13,5 +13,10 @@
         {
             return SideLength * SideLength;
         }
+
+        public override string ToString()
+        {
+            return $"Square with a length of side: {SideLength}";
+        }
     }
 }

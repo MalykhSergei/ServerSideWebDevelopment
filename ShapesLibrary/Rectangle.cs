@@ -1,6 +1,6 @@
-﻿namespace Resharper_Task.Shapes
+﻿namespace ShapesLibrary
 {
-    internal class Rectangle : IShape
+    public class Rectangle
     {
         public double Width { get; set; }
 
@@ -12,9 +12,9 @@
             Height = height;
         }
 
-        public double GetArea()
+        public override string ToString()
         {
-            return Width * Height;
+            return $"Rectangle with a height {Height} and width {Width}";
         }
     }
 }

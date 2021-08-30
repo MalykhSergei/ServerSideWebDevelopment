@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using Resharper_Task.Shapes;
+using ShapesLibrary;
 
 namespace Resharper_Task
 {
@@ -9,12 +10,12 @@ namespace Resharper_Task
         private static void Main()
         {
             var square = new Square(3);
-            var rectangle = new Rectangle(3, 6);
             var circle = new Circle(5);
+            var rectangle = new Rectangle(3, 5);
 
             Console.WriteLine($"Square area is: {square.GetArea()}");
             Console.WriteLine($"Circle area is: {circle.GetArea()}");
-            Console.WriteLine($"Rectangle area is: {rectangle.GetArea()}");
+            Console.WriteLine(rectangle);
 
             Console.WriteLine();
 

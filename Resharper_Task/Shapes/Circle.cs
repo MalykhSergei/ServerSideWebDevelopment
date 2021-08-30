@@ -15,5 +15,10 @@ namespace Resharper_Task.Shapes
         {
             return Math.PI * Radius * Radius;
         }
+
+        public override string ToString()
+        {
+            return $"Circle with a radius: {Radius}";
+        }
     }
 }
