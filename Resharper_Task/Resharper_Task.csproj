@@ -60,4 +60,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y C:\Users\Oksana\Desktop\ServerSideWebDevelopment\Resharper_Task\bin\Debug C:\Users\Oksana\Desktop\ServerSideWebDevelopment\Resharper_Task\bin\Backup</PostBuildEvent>
+  </PropertyGroup>
 </Project>

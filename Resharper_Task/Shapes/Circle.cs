@@ -11,10 +11,14 @@ namespace Resharper_Task.Shapes
             Radius = radius;
         }
 
+        #region AreaCalculation
+
         public double GetArea()
         {
             return Math.PI * Radius * Radius;
         }
+
+        #endregion
 
         public override string ToString()
         {

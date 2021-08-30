@@ -1,6 +1,6 @@
 ﻿namespace Resharper_Task.Shapes
 {
-     internal class Square : IShape
+    internal class Square : IShape
     {
         public double SideLength { get; set; }
 
@@ -9,10 +9,14 @@
             SideLength = sideLength;
         }
 
+        #region AreaCalculation
+
         public double GetArea()
         {
             return SideLength * SideLength;
         }
+
+        #endregion
 
         public override string ToString()
         {
