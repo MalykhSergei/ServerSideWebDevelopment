@@ -61,6 +61,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y $(TargetDir) $(ProjectDir)bin\Backup</PostBuildEvent>
+    <PostBuildEvent>mkdir $(ProjectDir)backup
+xcopy /Y $(TargetDir) $(ProjectDir)backup</PostBuildEvent>
   </PropertyGroup>
 </Project>
