@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5C2950B-A944-4D3C-A2DE-CD0348CBB5B1}</ProjectGuid>
+    <ProjectGuid>{A51FB4A9-4C44-4930-8137-007BA8A91267}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Resharper_Task</RootNamespace>
-    <AssemblyName>Resharper_Task</AssemblyName>
+    <RootNamespace>ResharperTask</RootNamespace>
+    <AssemblyName>ResharperTask</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -61,6 +61,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y C:\Users\Oksana\Desktop\ServerSideWebDevelopment\Resharper_Task\bin\Debug C:\Users\Oksana\Desktop\ServerSideWebDevelopment\Resharper_Task\bin\Backup</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y $(TargetDir) $(ProjectDir)bin\Backup</PostBuildEvent>
   </PropertyGroup>
 </Project>

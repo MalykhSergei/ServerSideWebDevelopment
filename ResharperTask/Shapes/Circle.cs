@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Resharper_Task.Shapes
+namespace ResharperTask.Shapes
 {
     internal class Circle : IShape
     {

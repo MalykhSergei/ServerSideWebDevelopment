@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Resharper_Task")]
+[assembly: AssemblyTitle("ResharperTask")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Resharper_Task")]
+[assembly: AssemblyProduct("ResharperTask")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f5c2950b-a944-4d3c-a2de-cd0348cbb5b1")]
+[assembly: Guid("a51fb4a9-4c44-4930-8137-007ba8a91267")]
 
 // Version information for an assembly consists of the following four values:
 //

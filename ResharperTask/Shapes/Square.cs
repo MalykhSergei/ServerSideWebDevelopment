@@ -1,4 +1,4 @@
-﻿namespace Resharper_Task.Shapes
+﻿namespace ResharperTask.Shapes
 {
     internal class Square : IShape
     {

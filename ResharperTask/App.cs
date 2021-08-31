@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Configuration;
-using Resharper_Task.Shapes;
+using ResharperTask.Shapes;
 using ShapesLibrary;
 
-namespace Resharper_Task
+namespace ResharperTask
 {
     internal class App
     {
