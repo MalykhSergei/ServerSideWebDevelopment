@@ -24,8 +24,8 @@ namespace ResharperTask
 
             Console.WriteLine();
 
-            var site = ConfigurationManager.AppSettings["SiteUrl"];
-            Console.WriteLine(site);
+            var siteUrl = ConfigurationManager.AppSettings["SiteUrl"];
+            Console.WriteLine(siteUrl);
 
             Console.ReadKey();
         }
