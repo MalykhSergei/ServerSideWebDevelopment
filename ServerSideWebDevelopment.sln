@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesLibrary", "ShapesLibr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResharperTask", "ResharperTask\ResharperTask.csproj", "{A51FB4A9-4C44-4930-8137-007BA8A91267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTask", "ExcelTask\ExcelTask.csproj", "{F2EF5345-C7E6-4528-9385-4DA61E2CCC36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A51FB4A9-4C44-4930-8137-007BA8A91267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A51FB4A9-4C44-4930-8137-007BA8A91267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A51FB4A9-4C44-4930-8137-007BA8A91267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2EF5345-C7E6-4528-9385-4DA61E2CCC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2EF5345-C7E6-4528-9385-4DA61E2CCC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2EF5345-C7E6-4528-9385-4DA61E2CCC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2EF5345-C7E6-4528-9385-4DA61E2CCC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
