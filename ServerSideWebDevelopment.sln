@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTask", "ExcelTask\Exce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTask", "JsonTask\JsonTask.csproj", "{B9329984-9A6E-4372-9BD0-F6B913D40CFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorTask", "VectorTask\VectorTask.csproj", "{38E5A7E7-2BCE-4CBF-A22B-27117738DBAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestVectorTask", "TestVectorTask\TestVectorTask.csproj", "{2CBDC239-BADE-47D6-9B02-EED7B4EB66A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{B9329984-9A6E-4372-9BD0-F6B913D40CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9329984-9A6E-4372-9BD0-F6B913D40CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9329984-9A6E-4372-9BD0-F6B913D40CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E5A7E7-2BCE-4CBF-A22B-27117738DBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E5A7E7-2BCE-4CBF-A22B-27117738DBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E5A7E7-2BCE-4CBF-A22B-27117738DBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E5A7E7-2BCE-4CBF-A22B-27117738DBAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CBDC239-BADE-47D6-9B02-EED7B4EB66A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBDC239-BADE-47D6-9B02-EED7B4EB66A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBDC239-BADE-47D6-9B02-EED7B4EB66A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBDC239-BADE-47D6-9B02-EED7B4EB66A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
