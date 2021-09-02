@@ -7,8 +7,8 @@ namespace TestVectorTask
     [TestClass]
     public class VectorUnitTests
     {
-        private readonly Vector _vector1 = new Vector(new double[] { 1, 2, 3 });
-        private readonly Vector _vector2 = new Vector(new double[] { 4, 5, 6 });
+        private readonly Vector _vector1 = new Vector(new double[] { 2, 3, 4 });
+        private readonly Vector _vector2 = new Vector(new double[] { 5, 6, 7 });
 
         [TestMethod]
         public void TestAdd()
