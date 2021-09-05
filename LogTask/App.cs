@@ -9,7 +9,7 @@ namespace LogTask
         {
             var appLogger = LogManager.GetCurrentClassLogger();
 
-            appLogger.Info("Programm startet");
+            appLogger.Info("Program started");
 
             var stringsList = Utils.GetStringsListFromFile("1.txt");
 
@@ -18,7 +18,7 @@ namespace LogTask
                 Console.WriteLine($"List of data from file: {string.Join(", ", stringsList)}");
             }
 
-            appLogger.Info("Programm ended");
+            appLogger.Info("Program ended");
 
             Console.ReadKey();
         }
