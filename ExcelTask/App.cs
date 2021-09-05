@@ -50,9 +50,12 @@ namespace ExcelTask
                 var allCells = sheet.Cells[1, 1, totalRows, totalColumns];
                 allCells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 allCells.AutoFitColumns();
+
                 var cellsBorder = allCells.Style.Border;
-                cellsBorder.Top.Style = cellsBorder.Bottom.Style =
-                    cellsBorder.Left.Style = cellsBorder.Right.Style = ExcelBorderStyle.Thin;
+                cellsBorder.Top.Style = ExcelBorderStyle.Thin;
+                cellsBorder.Bottom.Style = ExcelBorderStyle.Thin;
+                cellsBorder.Left.Style = ExcelBorderStyle.Thin;
+                cellsBorder.Right.Style = ExcelBorderStyle.Thin;
 
                 package.SaveAs(new FileInfo(file));
             }
