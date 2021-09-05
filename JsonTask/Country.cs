@@ -9,10 +9,5 @@ namespace JsonTask
         public long Population { get; set; }
 
         public List<Currency> Currencies { get; set; }
-
-        public class Currency
-        {
-            public string Name { get; set; }
-        }
     }
 }

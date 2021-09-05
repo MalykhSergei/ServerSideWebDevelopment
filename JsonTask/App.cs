@@ -13,40 +13,36 @@ namespace JsonTask
         {
             var request = WebRequest.Create("https://restcountries.eu/rest/v2/region/americas");
 
-            request.Credentials = CredentialCache.DefaultCredentials;
-
             var response = request.GetResponse();
 
             Console.WriteLine(((HttpWebResponse)response).StatusDescription);
             Console.WriteLine();
 
-            using (var dataStream = response.GetResponseStream())
+            using var responseStream = response.GetResponseStream();
+
+            var responseFromServer = "";
+
+            var reader = new StreamReader(responseStream!);
+
+            responseFromServer = reader.ReadToEnd();
+
+            var countries = JsonConvert.DeserializeObject<List<Country>>(responseFromServer);
+
+            var sumPopulation = countries!.Sum(country => country.Population);
+            Console.WriteLine($"Total population by country: {sumPopulation}");
+            Console.WriteLine();
+
+            Console.WriteLine("List of currencies:");
+            Console.WriteLine();
+
+            var currencyNamesList = (from country in countries from currency in country.Currencies select currency.Name)
+                .Distinct()
+                .ToList();
+
+            foreach (var currencyName in currencyNamesList)
             {
-                var responseFromServer = "";
-
-                if (dataStream != null)
-                {
-                    var reader = new StreamReader(dataStream);
-                    responseFromServer = reader.ReadToEnd();
-                }
-
-                var countries = JsonConvert.DeserializeObject<List<Country>>(responseFromServer);
-
-                if (countries != null)
-                {
-                    var sumPopulation = countries.Sum(country => country.Population);
-                    Console.WriteLine($"Total population by country: {sumPopulation}");
-                    Console.WriteLine();
-                }
-
-                Console.WriteLine("List of currencies:");
-                Console.WriteLine();
-
-                countries?.ForEach(country => country.Currencies
-                     .ForEach(currency => { Console.WriteLine(currency.Name); }));
+                Console.WriteLine(currencyName);
             }
-
-            response.Close();
         }
     }
 }
