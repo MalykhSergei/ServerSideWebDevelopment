@@ -2,11 +2,11 @@
 
 namespace JsonTask
 {
-    internal class Country
+    public class Country
     {
         public string Name { get; set; }
 
-        public long Population { get; set; }
+        public int Population { get; set; }
 
         public List<Currency> Currencies { get; set; }
     }

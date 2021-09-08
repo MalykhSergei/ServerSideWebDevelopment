@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 
@@ -20,28 +19,27 @@ namespace JsonTask
 
             using var responseStream = response.GetResponseStream();
 
-            var responseFromServer = "";
-
             var reader = new StreamReader(responseStream!);
 
-            responseFromServer = reader.ReadToEnd();
+            var countries = JsonConvert.DeserializeObject<List<Country>>(reader.ReadToEnd());
 
-            var countries = JsonConvert.DeserializeObject<List<Country>>(responseFromServer);
-
-            var sumPopulation = countries!.Sum(country => country.Population);
-            Console.WriteLine($"Total population by country: {sumPopulation}");
+            Console.WriteLine($"Total population by country: {countries.GetPopulationSum()}");
             Console.WriteLine();
 
             Console.WriteLine("List of currencies:");
             Console.WriteLine();
 
-            var currencyNamesList = (from country in countries from currency in country.Currencies select currency.Name)
-                .Distinct()
-                .ToList();
+            var countryCurrencies = countries.GetCountriesCurrenciesList();
+            var currencyNamesSet = new HashSet<string>();
 
-            foreach (var currencyName in currencyNamesList)
+            foreach (var currency in countryCurrencies)
             {
-                Console.WriteLine(currencyName);
+                currencyNamesSet.Add(currency.GetCurrencyNames());
+            }
+
+            foreach (var item in currencyNamesSet)
+            {
+                Console.WriteLine(item);
             }
         }
     }
