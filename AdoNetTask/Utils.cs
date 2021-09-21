@@ -16,25 +16,30 @@ namespace AdoNetTask
             return connection;
         }
 
-        private static SqlCommand GetSqlCommand(string sql)
+        private static SqlCommand GetSqlCommand(string sql, SqlConnection connection)
         {
-            using var command = new SqlCommand(sql, GetConnection());
+            var command = new SqlCommand(sql, connection);
 
             return command;
         }
 
-        public static object Select(string databaseName)
+        public static int GetTotalProductsCount()
         {
-            var sql = $"SELECT COUNT(*) FROM dbo.{databaseName}";
+            const string sql = "SELECT COUNT(*) FROM dbo.Products";
 
-            return (int)GetSqlCommand(sql).ExecuteScalar();
+            using var connection = GetConnection();
+            using var command = GetSqlCommand(sql, connection);
+
+            return (int)command.ExecuteScalar();
         }
 
         public static void InsertCategory(string categoryName)
         {
             const string sql = "INSERT INTO dbo.Categories(name) VALUES(@categoryName)";
 
-            var command = GetSqlCommand(sql);
+            using var connection = GetConnection();
+            using var command = GetSqlCommand(sql, connection);
+
             command.Parameters.Add(new SqlParameter("@categoryName", SqlDbType.NVarChar)
             {
                 Value = categoryName
@@ -48,7 +53,8 @@ namespace AdoNetTask
             const string sql = "INSERT INTO dbo.Products(name, price, categoryId)" +
                                "VALUES(@productName, @productPrice, @productCategory)";
 
-            var command = GetSqlCommand(sql);
+            using var connection = GetConnection();
+            using var command = GetSqlCommand(sql, connection);
 
             var sqlParameters = new[]
             {
@@ -73,10 +79,11 @@ namespace AdoNetTask
         public static void UpdateProduct(string newProductName, int id)
         {
             const string sql = "UPDATE dbo.Products " +
-                               "SET NAME= @newProductName " +
-                               "WHERE ID= @id";
+                               "SET Name = @newProductName " +
+                               "WHERE ID = @id";
 
-            using var command = GetSqlCommand(sql);
+            using var connection = GetConnection();
+            using var command = GetSqlCommand(sql, connection);
 
             var sqlParameters = new[]
             {
@@ -97,9 +104,10 @@ namespace AdoNetTask
         public static void DeleteProduct(string productName)
         {
             const string sql = "DELETE FROM dbo.Products " +
-                               "WHERE NAME= @productName";
+                               "WHERE Name = @productName";
 
-            using var command = GetSqlCommand(sql);
+            using var connection = GetConnection();
+            using var command = GetSqlCommand(sql, connection);
 
             command.Parameters.Add(new SqlParameter("@productName", SqlDbType.NVarChar)
             {
@@ -109,16 +117,17 @@ namespace AdoNetTask
             command.ExecuteNonQuery();
         }
 
-        public static List<object> GetProductsAndCategoriesList()
+        public static List<string> GetProductsAndCategoriesList()
         {
-            var productsWithCategoriesList = new List<object>();
+            var productsWithCategoriesList = new List<string>();
 
-            const string sql = "SELECT pr.NAME AS Products_name, cat.NAME AS Categories_Name " +
-                               "FROM[dbo].Products AS pr " +
-                               "LEFT JOIN[dbo].Categories AS cat " +
-                               "ON pr.CATEGORYID = cat.ID";
+            const string sql = "SELECT pr.Name AS Products_name, cat.Name AS Categories_Name " +
+                               "FROM [dbo].Products AS pr " +
+                               "JOIN[dbo].Categories AS cat " +
+                               "ON pr.CategoryId = cat.ID";
 
-            using var reader = GetSqlCommand(sql).ExecuteReader();
+            using var connection = GetConnection();
+            using var reader = GetSqlCommand(sql, connection).ExecuteReader();
 
             while (reader.Read())
             {
@@ -130,12 +139,13 @@ namespace AdoNetTask
 
         public static DataSet GetProductsAndCategoriesWithSqlDataAdapterList()
         {
-            const string sql = "SELECT pr.NAME AS Products_name, cat.NAME AS Categories_Name " +
-                               "FROM[dbo].Products AS pr " +
-                               "LEFT JOIN[dbo].Categories AS cat " +
-                               "ON pr.CATEGORYID = cat.ID";
+            const string sql = "SELECT pr.Name AS Products_name, cat.Name AS Categories_Name " +
+                               "FROM [dbo].Products AS pr " +
+                               "JOIN[dbo].Categories AS cat " +
+                               "ON pr.CategoryId = cat.ID";
 
-            using var adapter = new SqlDataAdapter(sql, GetConnection());
+            using var connection = GetConnection();
+            using var adapter = new SqlDataAdapter(sql, connection);
 
             var dataSet = new DataSet();
 

@@ -10,8 +10,8 @@ namespace AdoNetTask
         {
             try
             {
-                var reader = Utils.Select("Products");
-                Console.WriteLine($"Total number of products: {reader}");
+                var totalProductsCount = Utils.GetTotalProductsCount();
+                Console.WriteLine($"Total number of products: {totalProductsCount}");
                 Console.WriteLine();
 
                 Console.WriteLine("Please enter name of product: ");
@@ -21,9 +21,9 @@ namespace AdoNetTask
                 var productPrice = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine("Please enter category of product: ");
-                var productCategory = Convert.ToInt32(Console.ReadLine());
+                var productCategoryId = Convert.ToInt32(Console.ReadLine());
 
-                Utils.InsertProduct(productName, productPrice, productCategory);
+                Utils.InsertProduct(productName, productPrice, productCategoryId);
                 Console.WriteLine();
 
                 Console.WriteLine("Please enter new product name: ");
@@ -39,7 +39,6 @@ namespace AdoNetTask
                 productName = Console.ReadLine();
 
                 Utils.DeleteProduct(productName);
-
 
                 var productsWithCategoriesList = Utils.GetProductsAndCategoriesList();
 
@@ -71,9 +70,9 @@ namespace AdoNetTask
                     }
                 }
             }
-            catch (SqlException)
+            catch (SqlException exception)
             {
-                Console.WriteLine("Invalid name of database");
+                Console.WriteLine(exception.Message);
             }
         }
     }
