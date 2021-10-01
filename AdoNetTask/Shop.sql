@@ -37,7 +37,7 @@ SET		@i = 1
 SET		@j = 1
 	WHILE (@j <= 1000)
 		BEGIN
-			INSERT INTO [dbo].[Products](name, price, CATEGORYID)
+			INSERT INTO [dbo].[Products](name, price, CategoryId)
 			VALUES	(CONCAT('Product', @j),
 					(FLOOR(35 + RAND() * 149)),
 					(FLOOR(1 + RAND() * 100)));
