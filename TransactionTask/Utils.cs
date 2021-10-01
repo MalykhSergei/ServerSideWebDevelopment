@@ -10,7 +10,7 @@ namespace TransactionTask
 
         private static SqlConnection GetConnection()
         {
-            using var connection = new SqlConnection(ConnectionString);
+            var connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             return connection;
@@ -18,14 +18,16 @@ namespace TransactionTask
 
         public static void InsertWithTransaction(string newCategoryName)
         {
-            var transaction = GetConnection().BeginTransaction();
+            using var connection = GetConnection();
+            using var transaction = connection.BeginTransaction();
 
             try
             {
                 const string sql = "INSERT INTO dbo.Categories(name) " +
-                                   "VALUES(@newCategoryName)";
+                                   "VALUES (@newCategoryName)";
 
-                using var command = new SqlCommand(sql, GetConnection());
+                using var command = new SqlCommand(sql, connection);
+
                 command.Parameters.Add(new SqlParameter("@newCategoryName", SqlDbType.NVarChar)
                 {
                     Value = newCategoryName
@@ -34,12 +36,18 @@ namespace TransactionTask
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
 
+                if (newCategoryName == "newCategory")
+                {
+                    throw new Exception("Data could not be added to the database");
+                }
+
                 transaction.Commit();
+                Console.WriteLine("Data added to the database");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 transaction.Rollback();
+                Console.WriteLine(e.Message);
             }
         }
 
@@ -48,15 +56,24 @@ namespace TransactionTask
             try
             {
                 const string sql = "INSERT INTO dbo.Categories(name) " +
-                                   "VALUES(@newCategoryName)";
+                                   "VALUES (@newCategoryName)";
 
-                using var command = new SqlCommand(sql, GetConnection());
+                using var connection = GetConnection();
+                using var command = new SqlCommand(sql, connection);
+
                 command.Parameters.Add(new SqlParameter("@newCategoryName", SqlDbType.NVarChar)
                 {
                     Value = newCategoryName
                 });
 
                 command.ExecuteNonQuery();
+
+                if (newCategoryName == "newCategory")
+                {
+                    throw new Exception("Data could not be added to the database");
+                }
+
+                Console.WriteLine("Data added to the database");
             }
             catch (Exception e)
             {
