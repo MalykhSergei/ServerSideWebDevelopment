@@ -18,9 +18,7 @@ namespace AdoNetTask
 
         private static SqlCommand GetSqlCommand(string sql, SqlConnection connection)
         {
-            var command = new SqlCommand(sql, connection);
-
-            return command;
+            return new SqlCommand(sql, connection);
         }
 
         public static int GetTotalProductsCount()
@@ -123,7 +121,7 @@ namespace AdoNetTask
 
             const string sql = "SELECT pr.Name AS Products_name, cat.Name AS Categories_Name " +
                                "FROM [dbo].Products AS pr " +
-                               "JOIN[dbo].Categories AS cat " +
+                               "JOIN [dbo].Categories AS cat " +
                                "ON pr.CategoryId = cat.ID";
 
             using var connection = GetConnection();
@@ -141,7 +139,7 @@ namespace AdoNetTask
         {
             const string sql = "SELECT pr.Name AS Products_name, cat.Name AS Categories_Name " +
                                "FROM [dbo].Products AS pr " +
-                               "JOIN[dbo].Categories AS cat " +
+                               "JOIN [dbo].Categories AS cat " +
                                "ON pr.CategoryId = cat.ID";
 
             using var connection = GetConnection();
