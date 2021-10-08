@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TransactionTask
+﻿namespace TransactionTask
 {
     internal class App
     {
